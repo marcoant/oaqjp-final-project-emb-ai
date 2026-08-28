@@ -1,3 +1,6 @@
+"""
+server.py
+"""
 from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
@@ -5,8 +8,9 @@ app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
 
+# emo_detector function
 def emo_detector():
-
+    """ emo_detector function """
     text_to_analyse = request.args.get('textToAnalyse')
 
     # Pass the text to the function and store the response
@@ -23,11 +27,13 @@ def emo_detector():
     if dominant_emotion is None:
         return "Invalid text! Please try again!."
 
-    resstr = "For the given statement, the system response is 'anger': {}, 'disgust': {}, 'fear': {}, 'joy': {} and 'sadness': {}. The dominant emotion is {}"
+    resstr = "For the given statement, the system response is 'anger': {}, \
+        'disgust': {}, 'fear': {}, 'joy': {} and 'sadness': {}. The dominant emotion is {}"
     return resstr.format(anger, disgust, fear, joy, sadness, dominant_emotion)
 
 @app.route("/")
 def render_index_page():
+    """ index_page """
     return render_template('index.html')
 
 if __name__ == "__main__":

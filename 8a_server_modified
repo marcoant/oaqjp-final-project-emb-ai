@@ -7,7 +7,7 @@ app = Flask("Emotion Detector")
 
 def emo_detector():
 
-    text_to_analyze = request.args.get('textToAnalyse')
+    text_to_analyze = request.args.get('textToAnalyze')
 
     # Pass the text to the function and store the response
     response = emotion_detector(text_to_analyse)
